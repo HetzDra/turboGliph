@@ -1,0 +1,38 @@
+Package: turboGliph
+Type: Package
+Title: Find Specificity Groups with GLIPH and GLIPH2 Method
+Version: 0.99.0
+Authors@R:
+	c(person(given = "Jan-Patrick",
+		 family = "Hetzel",
+		 email = "jan-patrick.hetzel@stud.uni-due.de",
+		 role = c("aut", "cre"),
+		 comment = c(ORCID = "0000-0003-0175-6443")),
+    	  person(given = "Mohammadkarim",
+		 family = "Saeedghalati",
+		 role = "aut"), 
+    	  person(given = "Farnoush",
+		 family = "Farahpour",
+		 role = "ctb"),
+    	  person(given = "Daniel",
+		 family = "Hoffmann",
+		 role = "ctb",
+		 comment = c(ORCID = "0000-0003-2973-7869")))
+Maintainer: Jan-Patrick Hetzel <jan-patrick.hetzel@stud.uni-due.de>
+Description: GLIPH is an algorithm to cluster TCRs that are predicted to bind the same MHC-restricted peptide antigen. With this package we provide a runtime efficient implementation of the GLIPH algorithm. The package is rounded off by the inclusion of the second version of GLIPH, GLIPH2, as well as the provision of an extensive customizable visualization function of the clustering result using visNetwork.
+License: GPL-3
+Encoding: UTF-8
+LazyData: false
+Imports: stringdist, dplyr, parallel, igraph, visNetwork, grr, viridis, plotfunctions, stringr, doParallel, foreach, grDevices
+Suggests:
+    knitr, rmarkdown, prettydoc
+VignetteBuilder: knitr
+NeedsCompilation: no
+Author: Jan-Patrick Hetzel [aut, cre],
+  Mohammadkarim Saeedghalati [aut],
+  Farnoush Farahpour [ctb],
+  Daniel Hoffmann [ctb]
+Language: en-US
+RoxygenNote: 7.1.1
+biocViews: FunctionalPrediction, MotifDiscovery, GeneticVariability, FunctionalGenomics, ImmunoOncology, Clustering
+Depends: R (>= 4.0.0)
