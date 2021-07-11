@@ -1,10 +1,3 @@
----
-title: "NEWS"
-author: "J.-P. Hetzel"
-date: "11/7/2021"
-output: html_document
----
-
 # Introduction
 
 GLIPH (Grouping of Lymphocyte Interactions by Paratope Hotspots) is an algorithm developed by Glanville&nbsp;*et&nbsp;al.* to identify specificity groups in the T cell receptor repertoire based on local (motif sharing) and global (hamming distance) similarities.\(^1\)\(^,\)\(^2\)<br>
