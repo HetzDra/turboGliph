@@ -1,6 +1,6 @@
 ---
 title: "Introduction to GLIPH in R"
-author: "J.-P. Hetzel, M. Saeedghalati"
+author: "J.-P. Hetzel, M. Saeedghalati, F. Farahpour, D. Hoffmann"
 date: "`r Sys.Date()`"
 output: 
   prettydoc::html_pretty:
