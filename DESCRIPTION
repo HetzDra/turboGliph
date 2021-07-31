@@ -19,7 +19,7 @@ Authors@R:
 		 role = "aut",
 		 comment = c(ORCID = "0000-0003-2973-7869")))
 Description: GLIPH is an algorithm to cluster TCRs that are predicted to bind the same MHC-restricted peptide antigen. With this package we provide a runtime efficient implementation of the GLIPH algorithm. The package is rounded off by the inclusion of the second version of GLIPH, GLIPH2, as well as the provision of an extensive customizable visualization function of the clustering result using visNetwork.
-License: file LICENSE
+License: GPL-3
 Encoding: UTF-8
 LazyData: false
 Imports: stringdist, dplyr, parallel, igraph, visNetwork, grr, viridis, plotfunctions, stringr, doParallel, foreach, grDevices
