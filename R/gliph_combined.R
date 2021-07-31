@@ -209,7 +209,7 @@
 #' \item "clonal.expansion.score": enrichment of clonal expansion within the cluster.
 #' \item "hla.score": enrichment of common HLA among donor TCR contributors in cluster.
 #' \item "lowest.hlas": Enriched HLA alleles within the cluster.
-#' } \cr
+#' }
 #' File name: convergence_groups.txt
 #'
 #'
