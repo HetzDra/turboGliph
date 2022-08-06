@@ -10,7 +10,7 @@ Authors@R:
 		 comment = c(ORCID = "0000-0003-0175-6443")),
     	  person(given = "Mohammadkarim",
 		 family = "Saeedghalati",
-		 role = "aut"), 
+		 role = "aut", "cre"), 
     	  person(given = "Farnoush",
 		 family = "Farahpour",
 		 role = "aut"),
