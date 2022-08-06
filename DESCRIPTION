@@ -1,7 +1,7 @@
 Package: turboGliph
 Type: Package
 Title: Find Specificity Groups with GLIPH and GLIPH2 Method
-Version: 0.99.1
+Version: 0.99.2
 Authors@R:
 	c(person(given = "Jan-Patrick",
 		 family = "Hetzel",
