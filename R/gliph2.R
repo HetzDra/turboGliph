@@ -503,7 +503,7 @@ gliph2 <- function(cdr3_sequences,
   if(structboundaries) refseqs_motif_region <- base::substr(x = base::unique(refseqs[,1]),start = boundary_size + 1,stop = base::nchar(base::unique(refseqs[,1]))-boundary_size) else refseqs_motif_region <- base::unique(refseqs[,1])
   
   if(base::length(refseqs_motif_region) < base::length(motif_region)) {
-    base::stop("Analysis failed. Reference database must have more sequences than input data for the significance analysis to make sense and work.\n")
+    base::warning("Reference database must have more sequences than input data for the significance analysis to make sense and work.\n")
   }
   
   ### Initiate parallel execution
