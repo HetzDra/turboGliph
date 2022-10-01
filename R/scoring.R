@@ -345,7 +345,7 @@ cluster_scoring <- function(cluster_list,
     score_hla <- base::c()
     lowest_hla <- ""
     if(hla_info == TRUE && patient_info == TRUE){
-      act_seq_infos <- act_seq_infos[act_seq_infos$HLA != "",]
+      act_seq_infos <- act_seq_infos[act_seq_infos$HLA != "" & !base::is.na(act_seq_infos$HLA),]
       act_seq_infos$patient <- gsub(":.*", "",act_seq_infos$patient)
       
       score_hla <- 1
