@@ -222,6 +222,7 @@ cluster_scoring <- function(cluster_list,
     cdr3_sequences$patient <- gsub(":.*", "",cdr3_sequences$patient)
     all_patients <- base::sort(base::unique(cdr3_sequences$patient))
     all_hlas <- base::unlist(base::strsplit(base::unique(cdr3_sequences$HLA), ","))
+    all_hlas <- all_hlas[!base::is.na(all_hlas)]
     all_hlas <- base::sort(base::unique(base::gsub(":.*", "", all_hlas, perl = TRUE)))
     num_patients <- base::length(all_patients)
     num_HLAs <- base::length(all_hlas)
