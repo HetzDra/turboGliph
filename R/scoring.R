@@ -190,7 +190,7 @@ cluster_scoring <- function(cluster_list,
   if("HLA" %in% base::colnames(cdr3_sequences)) hla_info <- TRUE else hla_info <- FALSE
   if(hla_info == TRUE && patient_info == TRUE){
     if("patient" %in% base::colnames(cdr3_sequences) && "HLA" %in% base::colnames(cdr3_sequences)){
-      cdr3_sequences <- cdr3_sequences[cdr3_sequences$HLA != "",]
+      cdr3_sequences <- cdr3_sequences[cdr3_sequences$HLA != "" & !base::is.na(cdr3_sequences$HLA),]
       if(nrow(cdr3_sequences > 0)) score_names <- base::c(score_names, "hla.score", "lowest.hlas") else hla_info <- FALSE
     }
   }
@@ -210,6 +210,15 @@ cluster_scoring <- function(cluster_list,
   vgene_ref_frequencies <- reference_list[[refdb_name]][[2]]$freq
   cdr3_length_ref_frequencies <- reference_list[[refdb_name]][[3]]$freq
   
+  if(!base::identical(refdb_beta, "gliph_reference")){
+    if("TRBV" %in% base::colnames(refdb_beta)){
+      vgene_ref_frequencies <- base::as.data.frame(base::table(refdb_beta$TRBV))
+      vgene_ref_frequencies <- vgene_ref_frequencies$Freq/sum(vgene_ref_frequencies$Freq)
+    }
+    cdr3_length_ref_frequencies <- base::as.data.frame(base::table(base::nchar(refdb_beta$CDR3b)))
+    cdr3_length_ref_frequencies <- cdr3_length_ref_frequencies$Freq/sum(cdr3_length_ref_frequencies$Freq) 
+  }
+  
   if(!base::is.null(v_usage_freq)) vgene_ref_frequencies <- base::as.numeric(v_usage_freq[,2])
   if(!base::is.null(cdr3_length_freq)) cdr3_length_ref_frequencies <- base::as.numeric(cdr3_length_freq[,2])
 
@@ -221,16 +230,17 @@ cluster_scoring <- function(cluster_list,
   if(hla_info == TRUE && patient_info == TRUE){
     cdr3_sequences$patient <- gsub(":.*", "",cdr3_sequences$patient)
     all_patients <- base::sort(base::unique(cdr3_sequences$patient))
+    all_patients <- all_patients[!base::is.na(all_patients)]
     all_hlas <- base::unlist(base::strsplit(base::unique(cdr3_sequences$HLA), ","))
     all_hlas <- all_hlas[!base::is.na(all_hlas)]
     all_hlas <- base::sort(base::unique(base::gsub(":.*", "", all_hlas, perl = TRUE)))
     num_patients <- base::length(all_patients)
     num_HLAs <- base::length(all_hlas)
 
-    all_patient_hlas <- base::lapply(base::unique(cdr3_sequences$patient), function(x){
+    all_patient_hlas <- base::lapply(all_patients, function(x){
       base::sort(base::unique(base::gsub(":.*", "", base::unlist(base::strsplit(cdr3_sequences$HLA[cdr3_sequences$patient == x][1], ",")), perl = TRUE)))
     })
-    base::names(all_patient_hlas) <- base::unique(cdr3_sequences$patient)
+    base::names(all_patient_hlas) <- all_patients
 
     all_hlas <- base::data.frame(HLA = all_hlas)
     all_hlas$counts <- base::apply(all_hlas, 1, function(x){
